@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org">
+<head th:replace="base :: headstuff"></head>
+<body>
+<div th:replace="base :: navbar"></div>
+<div class="container">
+    <div class="space"></div>
+    <div class="form">
+        <form action="#"
+              th:action="@{/process}"
+              th:object="${cafe}"
+              method="post" enctype="multipart/form-data">
+
+            <input type="hidden" th:field="*{id}" />
+
+            Name: <input type="text" th:field="*{itemName}"
+                              placeholder="Patient name"/>
+            <span class="text-danger" th:if="${#fields.hasErrors('itemName')}"
+                  th:errors="*{itemName}"></span><br/><br/>
+
+            Age : <input type="text" th:field="*{price}" />
+            <span class="text-danger" th:if="${#fields.hasErrors('price')}"
+                  th:errors="*{price}"></span><br />
+
+            Location :<textarea placeholder="Enter description" rows="3"
+                                   th:field="*{description}" />
+            <span class="text-danger" th:if="${#fields.hasErrors('description')}"
+                  th:errors="*{description}"></span><br/>
+
+            Medical History :<textarea placeholder="Enter medical" rows="3"
+                                   th:field="*{medical}" />
+            <span class="text-danger" th:if="${#fields.hasErrors('medical')}"
+                  th:errors="*{medical}"></span><br/>
+
+            Social History :<textarea placeholder="Enter social" rows="3"
+                                   th:field="*{social}" />
+            <span class="text-danger" th:if="${#fields.hasErrors('social')}"
+                  th:errors="*{social}"></span><br/>
+
+
+            Family History:<textarea placeholder="Enter family" rows="3"
+                                   th:field="*{family}" />
+            <span class="text-danger" th:if="${#fields.hasErrors('family')}"
+                  th:errors="*{family}"></span><br/>
+
+            Current illness :<textarea placeholder="Enter location" rows="3"
+                                   th:field="*{location}" />
+            <span class="text-danger" th:if="${#fields.hasErrors('location')}"
+                  th:errors="*{location}"></span><br/>
+
+
+
+
+
+
+            <section>
+                <input type="file" name="file" /><br/><br/>
+            </section>
+
+            <button type="submit" class="btn btn-success">Submit</button>
+        </form>
+
+    </div>
+</div>
+
+<footer th:replace="base :: footer"></footer>
+</body>
+</html>
